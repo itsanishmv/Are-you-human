@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 function useGenerateCaptcha(input) {
   const [captcha, setCaptcha] = useState();
   const [match, setMatch] = useState(false);
@@ -10,8 +10,10 @@ function useGenerateCaptcha(input) {
       setMatch(false);
     }
   }, [input]);
+
   const alphabets =
     "!@#$%^&*+_-~ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
   function generate(chars) {
     let randomCaptcha = "";
     for (let i = 0; i < chars; i++) {
