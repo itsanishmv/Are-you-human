@@ -49,6 +49,14 @@ input[spellCheck="false"]
 form > input:hover {
   border : 2px solid lightgray;
 }
+.success__message{
+  text-align: center;
+  color: green;
+  background-color: lightgreen;
+  border-radius: 8px;
+  padding: 5px;
+  font-weight: 600;
+}
 /* .captcha__input{
   box-sizing: border-box;
   padding: 1rem;
