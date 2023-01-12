@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import Captcha from "./components/Captcha/Captcha";
 import useGenerateCaptcha from "./hooks/useGenerateCaptcha";
+import DARK_MODE from "./assets/darkmode_icon.svg";
+import LIGHT_MODE from "./assets/lightmode_icon.svg";
 function App() {
   const [input, setInput] = useState("");
   const [validateCpatcha, setValidateCaptcha] = useState();
-  const [success, setSuccess] = useState(false);
+  const [mode, setMode] = useState(false);
   const { captcha, generate, match } = useGenerateCaptcha(input);
   useEffect(() => {
     generate(6);
@@ -15,7 +17,6 @@ function App() {
     e.preventDefault();
     if (match) {
       setValidateCaptcha(true);
-      setSuccess(true);
     } else {
       setValidateCaptcha(false);
     }
@@ -23,7 +24,7 @@ function App() {
     generate(6);
   }
   return (
-    <div className="app__container">
+    <div className={`app__container ${mode ? "dark" : "light"}`}>
       <div className="form__wrapper">
         <img
           style={{
@@ -32,6 +33,12 @@ function App() {
           }}
           src="https://softr-prod.imgix.net/applications/9d5e7a64-e0eb-4200-887e-f642ba902626/assets/cf0a1430-49e1-4871-96a4-5fe7ac8617c8.png"
           alt="logo"
+        />
+        <img
+          className="darkmode__button"
+          onClick={() => setMode(!mode)}
+          src={mode ? LIGHT_MODE : DARK_MODE}
+          alt="darkmode"
         />
         <form onSubmit={(e) => handleSubmit(e)}>
           <input autoComplete="off" required type="email" placeholder="Email" />
@@ -66,9 +73,7 @@ function App() {
 
           {validateCpatcha !== undefined
             ? !validateCpatcha && (
-                <span style={{ marginTop: "-15px", fontSize: "0.625rem" }}>
-                  Invalid captcha
-                </span>
+                <span className="captcha__error">Invalid captcha</span>
               )
             : ""}
 
