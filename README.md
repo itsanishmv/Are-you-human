@@ -6,6 +6,7 @@ A demo sign up form to showcase the captcha functionality.
 
 - Reusable captcha component
 - useGenerateCaptcha
+- dark mode
 
 ## Usage/Examples
 
