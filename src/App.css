@@ -1,20 +1,44 @@
-.app__container{
+:root{
+  --primary-white : #FFFDFC ; 
+  --secondary-white : #FFFFFF;
+  --red : #FC2D31;
+  --primary-black : #1A1A1A ; 
+  --secondary-black : #24272c;
   
+}
+.light{
+  --text : var(--primary-black);
+  --bg-color : var(--primary-white);
+  --bg-color-container : var(--primary-white);
+  --btn-color : var(--red);
+  --shadow : rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  --input-color :var(--primary-white);
+  --error : var(--red)
+}
+.dark{
+  --text : var(--secondary-white);
+  --bg-color : var(--secondary-black);
+  --bg-color-container : var(--primary-black);
+  --btn-color :  var(--red);
+  --shadow : rgba(255, 251, 251, 0.25) 0px 50px 100px -20px, rgba(255, 251, 251, 0.947) 0px 30px 60px -30px;
+  --input-color : var(--primary-black);
+  --error : var(--red)
+}
+.app__container{
   height: 100vh;
   display: flex;
   justify-content: center;
-  background-color: #FFFDFC;
-  
-  color: red
+  background-color: var( --bg-color-container );
 }
 .form__wrapper{
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  position: relative;
+  box-shadow: var(--shadow);
   border-radius: 8px;
   gap:10px;  
   box-sizing: border-box;
   height:70%;
   margin-top: 5%;
-  background-color: #FFFFFF;
+  background-color: var(--bg-color);
   display:flex;
   flex-direction: column;
   width: 25%;
@@ -23,8 +47,9 @@
 }
 .signup__btn{
   height:3rem;
-  color:#FFFFFF;
-  background-color: #FC2D31;
+  /* color:var(--text); */
+  color : var(--primary-white);
+  background-color: var(--btn-color);
   border:none;
   border-radius: 8px;
   font-weight: 600;
@@ -39,13 +64,14 @@ form{
 }
 form > input {
   padding: 1rem;
+  color:var(--text);  
   border-radius: 8px;
   outline: none;
   border: 2px solid transparent;
-  background-color: #F9FAFC;
+  background-color: var(--input-color);
 
 }
-input[spellCheck="false"] 
+
 form > input:hover {
   border : 2px solid lightgray;
 }
@@ -57,17 +83,24 @@ form > input:hover {
   padding: 5px;
   font-weight: 600;
 }
-/* .captcha__input{
-  box-sizing: border-box;
-  padding: 1rem;
-  border-radius: 8px;
-  width: 100%;
-  outline: none;
-  border: 2px solid lightblue;
-  background-color: #F9FAFC;
-  font-weight: 600;
-  font-size: medium;
-} */
+.captcha__error{
+  color : var(--error);
+  margin-top: -15px;
+  font-size: 0.625rem;
+}
+.darkmode__button{
+  height: 1rem;
+  width: 1rem;
+  border-radius: 100%;
+  padding: 0.5rem;
+  background-color: aliceblue;
+  cursor: pointer;
+  position: absolute;
+  right:1rem;
+  top:1rem
+
+}
+
 @media screen and (max-width: 800px) {
   .form__wrapper{
     width: 90%;
